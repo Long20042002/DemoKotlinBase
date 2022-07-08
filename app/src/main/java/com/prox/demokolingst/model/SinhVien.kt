@@ -1,4 +1,4 @@
-package com.prox.demokolingst
+package com.prox.demokolingst.model
 
 class SinhVien {
     var hoTen: String = ""

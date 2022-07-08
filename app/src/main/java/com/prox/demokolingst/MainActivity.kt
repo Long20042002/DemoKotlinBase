@@ -2,19 +2,63 @@ package com.prox.demokolingst
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.prox.demokolingst.adapter.AdapterPost
+import com.prox.demokolingst.adapter.MusicAdapter
+import com.prox.demokolingst.api.MyDataItem
+import com.prox.demokolingst.api.PostViewModel
+import com.prox.demokolingst.callback.ItemClickListPhuongTien
+import com.prox.demokolingst.callback.ItemClickPost
+import com.prox.demokolingst.callback.onDialogCallback
 import com.prox.demokolingst.database.PhuongTienViewModel
 import com.prox.demokolingst.databinding.ActivityMainBinding
+import com.prox.demokolingst.dialog.DialogFragmentUpdate
+import com.prox.demokolingst.model.Music
+import com.prox.demokolingst.model.PhuongTien
 
-class MainActivity : AppCompatActivity(), ItemClickListPhuongTien, onDialogCallback {
-    val viewmodel : PhuongTienViewModel by viewModels()
-    private lateinit var binding : ActivityMainBinding
+class MainActivity : AppCompatActivity(), ItemClickListPhuongTien, onDialogCallback, ItemClickPost {
+    val viewmodel: PhuongTienViewModel by viewModels()
+    val viewModelP: PostViewModel by viewModels()
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+//        val adapterPost = AdapterPost(this)
+//        binding.rcvPhuongTien.adapter = adapterPost
+//        binding.rcvPhuongTien.layoutManager = LinearLayoutManager(this)
+
+
+//        viewModelP.posts.observe(this) {
+//            adapterPost.mList = it as ArrayList<MyDataItem>
+//            adapterPost.notifyDataSetChanged()
+//        }
+
+        val adapterMusic = MusicAdapter()
+        binding.rcvPhuongTien.adapter = adapterMusic
+        binding.rcvPhuongTien.layoutManager = LinearLayoutManager(this)
+
+        viewModelP.musics.observe(this) {
+            Log.d("TAG", "onCreate: $it")
+            adapterMusic.mList = it as ArrayList<Music>
+            adapterMusic.notifyDataSetChanged()
+        }
+//        val vmFactory = PostViewModelFactory(PostRepository())
+//        viewmodelAPI = ViewModelProvider(this, vmFactory)[PostViewModel::class.java]
+//        viewmodelAPI.getPostItem()
+//        viewmodelAPI.responseValue.observe(this) { res ->
+//            if (res.isSuccessful) {
+//                val listData: List<MyDataItem>? = res.body()
+//
+//            } else {
+//                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+//            }
+//        }
 //        var ptien : PhuongTien = PhuongTien("Xe Dap", "Mau den", 2)
 //
 //        Log.d("TAG", "onCreate: ${ptien.ten} ${ptien.mau}")
@@ -161,22 +205,22 @@ class MainActivity : AppCompatActivity(), ItemClickListPhuongTien, onDialogCallb
 //            PhuongTien("bbbb","bbb",3)
 //        )
 //        viewmodel = ViewModelProvider(this)[PhuongTienViewModel::class.java]
-        viewmodel.addPT(PhuongTien("Long", "Den", 2))
-        viewmodel.addPT(PhuongTien("Long1", "Den1", 21))
-        viewmodel.addPT(PhuongTien("Long2", "Den2", 22))
-        viewmodel.addPT(PhuongTien("Long3", "Den2", 23))
-        viewmodel.addPT(PhuongTien("Long4", "Den3", 24))
-        val adapter = AdapterRecycler(this)
-        binding.rcvPhuongTien.adapter = adapter
-
-        viewmodel.phuongTiens.observe(this) {
-         adapter.mList= it as ArrayList<PhuongTien>
-            adapter.notifyDataSetChanged()
-        }
-
-
-        binding.rcvPhuongTien.layoutManager = LinearLayoutManager(this)
-        binding.rcvPhuongTien.setHasFixedSize(true)
+//        viewmodel.addPT(PhuongTien("Long", "Den", 2))
+//        viewmodel.addPT(PhuongTien("Long1", "Den1", 21))
+//        viewmodel.addPT(PhuongTien("Long2", "Den2", 22))
+//        viewmodel.addPT(PhuongTien("Long3", "Den2", 23))
+//        viewmodel.addPT(PhuongTien("Long4", "Den3", 24))
+//        val adapter = AdapterRecycler(this)
+//        binding.rcvPhuongTien.adapter = adapter
+//
+//        viewmodel.phuongTiens.observe(this) {
+//         adapter.mList= it as ArrayList<PhuongTien>
+//            adapter.notifyDataSetChanged()
+//        }
+//
+//
+//        binding.rcvPhuongTien.layoutManager = LinearLayoutManager(this)
+//        binding.rcvPhuongTien.setHasFixedSize(true)
 
     }
 
@@ -205,7 +249,9 @@ class MainActivity : AppCompatActivity(), ItemClickListPhuongTien, onDialogCallb
         viewmodel.updatePT(pt)
     }
 
-
+    override fun clickItemPost(myDataItem: MyDataItem) {
+        TODO("Not yet implemented")
+    }
 //    fun showName(ten : String){
 //        Log.d("TAG", "showName: Oke ham fun show name thuc thi $ten")
 //    }

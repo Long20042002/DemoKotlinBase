@@ -2,9 +2,8 @@ package com.prox.demokolingst.database
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.prox.demokolingst.PhuongTien
+import com.prox.demokolingst.model.PhuongTien
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.prox.demokolingst.PhuongTien
+import com.prox.demokolingst.model.PhuongTien
 
 @Database(
     entities = [PhuongTien::class],

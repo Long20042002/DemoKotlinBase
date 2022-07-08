@@ -1,4 +1,6 @@
-package com.prox.demokolingst
+package com.prox.demokolingst.callback
+
+import com.prox.demokolingst.model.PhuongTien
 
 interface ItemClickListPhuongTien {
     fun itemClickToDetail(phuongTien: PhuongTien)

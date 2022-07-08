@@ -2,7 +2,7 @@ package com.prox.demokolingst.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.prox.demokolingst.PhuongTien
+import com.prox.demokolingst.model.PhuongTien
 
 @Dao
 interface PhuongTienDao {

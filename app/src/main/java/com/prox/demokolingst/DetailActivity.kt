@@ -3,6 +3,7 @@ package com.prox.demokolingst
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.prox.demokolingst.databinding.ActivityDetailBinding
+import com.prox.demokolingst.model.PhuongTien
 
 class DetailActivity : AppCompatActivity() {
 

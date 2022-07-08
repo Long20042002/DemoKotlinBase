@@ -94,6 +94,10 @@
 <!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="wrap_content"/>-->
 <!--    </LinearLayout>-->
+    <TextView
+        android:id="@+id/tvAPI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvPhuongTien"

@@ -1,19 +1,21 @@
-package com.prox.demokolingst
+package com.prox.demokolingst.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.prox.demokolingst.callback.ItemClickListPhuongTien
+import com.prox.demokolingst.R
 import com.prox.demokolingst.databinding.CardLayoutBinding
+import com.prox.demokolingst.model.PhuongTien
 
 class AdapterRecycler(
                     private val callback: ItemClickListPhuongTien
                       ): RecyclerView.Adapter<AdapterRecycler.ViewHolder>() {
 
-     var mList= arrayListOf<PhuongTien>()
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterRecycler.ViewHolder {
+
+    var mList= arrayListOf<PhuongTien>()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
             CardLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)

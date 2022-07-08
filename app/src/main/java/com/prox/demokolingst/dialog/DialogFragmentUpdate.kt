@@ -1,13 +1,16 @@
-package com.prox.demokolingst
+package com.prox.demokolingst.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.prox.demokolingst.R
+import com.prox.demokolingst.callback.onDialogCallback
 import com.prox.demokolingst.databinding.DialogUpdateBinding
+import com.prox.demokolingst.model.PhuongTien
 
-class DialogFragmentUpdate(private val callback: onDialogCallback,private val phuongTien: PhuongTien): DialogFragment() {
+class DialogFragmentUpdate(private val callback: onDialogCallback, private val phuongTien: PhuongTien): DialogFragment() {
     private lateinit var binding: DialogUpdateBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
